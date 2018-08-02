@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Фамилия</th>
+      <th>Имя</th>
+      <th>Отчество</th>
+      <th>Дата Рождения</th>
+      <th>Творчество</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let author of authors" (click)="onSelect(author)">
+      <td>{{author.id}}</td>
+      <td>{{author.lastname}}</td>
+      <td>{{author.firstname}}</td>
+      <td>{{author.secondname}}</td>
+      <td>{{author.dob}}</td>
+      <td>Список книг</td>
+
+    </tr>
+  </tbody>
+</table>
+<app-books [author]="selectedAuthor"></app-books>
