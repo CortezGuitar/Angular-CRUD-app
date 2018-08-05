@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Author } from '../author';
-import { AUTHORS } from '../mock-authors';
-import { Book } from '../book';
+import { AuthorService } from '../author.service';
+
 
 @Component({
   selector: 'app-authors',
@@ -9,18 +9,22 @@ import { Book } from '../book';
   styleUrls: ['./authors.component.css']
 })
 export class AuthorsComponent implements OnInit {
-  authors = AUTHORS;
+  authors: Author[];
 
   selectedAuthor: Author;
 
 
-  constructor() { }
+  constructor(private authorService: AuthorService) { }
 
   ngOnInit() {
+    this.getAuthors();
   }
 
   onSelect(author: Author): void {
     this.selectedAuthor = author;
+  }
+  getAuthors(): void {
+    this.authors = this.authorService.getAuthors();
   }
 
 }
