@@ -3,4 +3,5 @@ export class Book {
   name: string;
   pages: string;
   genre: string;
+  author: string;
 }
