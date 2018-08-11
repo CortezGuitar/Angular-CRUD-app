@@ -16,10 +16,10 @@
       <td>{{author.firstname}}</td>
       <td>{{author.secondname}}</td>
       <td>{{author.dob}}</td>
-      <td>Список книг</td>
+      <a routerLink="/books/{{author.id}}"><td>Список Книг</td></a>
 
     </tr>
   </tbody>
 </table>
-<app-books [author]="selectedAuthor"></app-books>
+<!-- <app-books [author]="selectedAuthor"></app-books> -->
 

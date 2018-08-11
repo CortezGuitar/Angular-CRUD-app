@@ -1,7 +1,10 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, AfterContentChecked } from '@angular/core';
 import { Author } from '../author';
-import { Book } from '../book';
-import { BookService } from '../book.service';
+import { AuthorService } from '../author.service';
+
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import * as _ from 'lodash';
 
 
 
@@ -10,35 +13,44 @@ import { BookService } from '../book.service';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent implements OnInit, OnChanges {
+export class BooksComponent implements OnInit, AfterContentChecked  {
   @Input() author: Author;
 
+  booklist = this.author;
 
-  books: Book[];
+  constructor(
+    private authorService: AuthorService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) { }
 
-
-  constructor(private bookService: BookService) { }
 
   ngOnInit() {
-    this.getBooks();
+    this.getAuthor();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    // tslint:disable-next-line:forin
-    // for (const propName in changes) {
-    //   const change = changes[propName];
-    //   const curVal  = JSON.stringify(change.currentValue);
-    //   const prevVal = JSON.stringify(change.previousValue);
-
-    //    console.log(curVal);
-    //    console.log(prevVal);
-    // }
- }
-
-  getBooks(): void {
-    this.bookService.getBooks()
-      .subscribe(books => this.books = books);
-      }
+  ngAfterContentChecked() {
+    this.getBookList();
+  }
 
 
+getAuthor(): void {
+  const id = +this.route.snapshot.paramMap.get('id');
+  this.authorService.getAuthor(id)
+    .subscribe(author => this.author = author);
 }
+goBack(): void {
+  this.location.back();
+}
+getBookList(): void {
+  let fullList = [];
+
+  for (const item of this.author.booklist) {
+    if (_.isEqual(item.author, this.author.lastname)) {
+        fullList = fullList.concat(item);
+      }
+  }
+  this.author.booklist = fullList;
+}
+}
+
