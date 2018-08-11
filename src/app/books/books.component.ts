@@ -16,6 +16,7 @@ import * as _ from 'lodash';
 export class BooksComponent implements OnInit, AfterContentChecked  {
   @Input() author: Author;
 
+
   booklist = this.author;
 
   constructor(
@@ -27,6 +28,7 @@ export class BooksComponent implements OnInit, AfterContentChecked  {
 
   ngOnInit() {
     this.getAuthor();
+    this.getBookList();
   }
 
   ngAfterContentChecked() {
@@ -44,13 +46,14 @@ goBack(): void {
 }
 getBookList(): void {
   let fullList = [];
-
+  if (this.author) {
   for (const item of this.author.booklist) {
     if (_.isEqual(item.author, this.author.lastname)) {
         fullList = fullList.concat(item);
       }
   }
   this.author.booklist = fullList;
+}
 }
 }
 
