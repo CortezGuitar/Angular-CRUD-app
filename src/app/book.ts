@@ -1,7 +1,9 @@
 export class Book {
-  id: number;
-  name: string;
-  pages: string;
-  genre: string;
-  author: string;
+  constructor(
+  public id: number,
+  public name: string,
+  public pages: string,
+  public genre: string,
+  public author: string
+  ) { }
 }

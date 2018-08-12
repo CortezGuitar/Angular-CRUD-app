@@ -1,4 +1,4 @@
-<table>
+<table class="table table-responsive">
   <thead>
     <tr>
       <th>Id</th>
@@ -10,16 +10,27 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let author of authors" (click)="onSelect(author)">
+    <tr *ngFor="let author of authors">
       <td>{{author.id}}</td>
       <td>{{author.lastname}}</td>
       <td>{{author.firstname}}</td>
       <td>{{author.secondname}}</td>
       <td>{{author.dob}}</td>
-      <a routerLink="/books/{{author.id}}"><td>Список Книг</td></a>
-
+      <td><a routerLink="/books/{{author.id}}">Список Книг</a></td>
+      <td><button class="btn btn-danger" title="delete author"
+          (click)="delete(author)">x</button>
+      </td>
     </tr>
   </tbody>
 </table>
-<!-- <app-books [author]="selectedAuthor"></app-books> -->
+<div>
+    <label class="control-label">Author name:
+      <input #authorName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button class="btn" (click)="add(authorName.value); authorName.value=''">
+      add
+    </button>
+  </div>
+
 

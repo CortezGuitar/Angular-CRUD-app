@@ -2,8 +2,6 @@
   width: 640px;
   height: 300px;
   background: url('./images/maxresdefault.jpg') no-repeat;
-  background-size: contain;
-
 }
 h1 {
   font-size: 1.2em;

@@ -53,7 +53,11 @@ getBookList(): void {
       }
   }
   this.author.booklist = fullList;
+  }
 }
+save(): void {
+  this.authorService.updateAuthor(this.author)
+  .subscribe(() => this.goBack());
 }
 }
 

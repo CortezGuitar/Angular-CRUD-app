@@ -1,9 +1,11 @@
 import { Book } from './book';
 export class Author {
-  id: number;
-  firstname: string;
-  secondname: string;
-  lastname: string;
-  dob: string;
-  booklist: Book[];
+  constructor(
+  public id: number,
+  public firstname: string,
+  public lastname: string,
+  public dob: string,
+  public booklist?: Book[],
+  public secondname?: string,
+  ) { }
 }

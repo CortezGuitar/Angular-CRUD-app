@@ -5,7 +5,9 @@ import { Observable, of} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+};
 
 @Injectable({
   providedIn: 'root'
@@ -33,13 +35,29 @@ export class AuthorService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-
       return of(result as T);
     };
   }
-  // getAuthor(id: number): Observable<Author> {
-  //   return of(AUTHORS.find(author => author.id === id));
-  // }
+
+  updateAuthor(author: Author): Observable<any> {
+    return this.http.put(this.authorsUrl, author, httpOptions).pipe(
+      catchError(this.handleError<any>('updateHero'))
+    );
+  }
+
+  addAuthor (author: Author): Observable<Author> {
+    return this.http.post<Author>(this.authorsUrl, author, httpOptions).pipe(
+      catchError(this.handleError<Author>('addHero'))
+    );
+  }
+  deleteAuthor (author: Author | number): Observable<Author> {
+    const id = typeof author === 'number' ? author : author.id;
+    const url = `${this.authorsUrl}/${id}`;
+
+    return this.http.delete<Author>(url, httpOptions).pipe(
+      catchError(this.handleError<Author>('deleteAuthor'))
+    );
+  }
 
 
 }

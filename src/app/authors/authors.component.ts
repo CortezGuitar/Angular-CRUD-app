@@ -25,4 +25,16 @@ export class AuthorsComponent implements OnInit {
     this.authorService.getAuthors()
       .subscribe(authors => this.authors = authors);
   }
+  add(lastname: string): void {
+    lastname = lastname.trim();
+    if (!lastname) { return; }
+    this.authorService.addAuthor({ lastname } as Author)
+      .subscribe(author => {
+        this.authors.push(author);
+      });
+  }
+  delete(author: Author): void {
+    this.authors = this.authors.filter(a => a !== author);
+    this.authorService.deleteAuthor(author).subscribe();
+  }
 }

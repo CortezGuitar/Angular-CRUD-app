@@ -13,16 +13,6 @@ export class InMemoryDataService implements InMemoryDbService {
   booklist: books},
   {id: 3, firstname: 'Джордж Бернард', secondname: 'Иванович', lastname: 'Шоу', dob: '26.07.1856',
   booklist: books},
-  {id: 4, firstname: 'Джордж Бернард', secondname: 'Иванович', lastname: 'Шоу', dob: '26.07.1856',
-  booklist: books},
-  {id: 5, firstname: 'Джордж Бернард', secondname: 'Иванович', lastname: 'Шоу', dob: '26.07.1856',
-  booklist: books},
-  {id: 6, firstname: 'Джордж Бернард', secondname: 'Иванович', lastname: 'Шоу', dob: '26.07.1856',
-  booklist: books},
-  {id: 7, firstname: 'Джордж Бернард', secondname: 'Иванович', lastname: 'Шоу', dob: '26.07.1856',
-  booklist: books},
-  {id: 8, firstname: 'Джордж Бернард', secondname: 'Иванович', lastname: 'Шоу', dob: '26.07.1856',
-  booklist: [books]}
     ];
 
     return {authors};
