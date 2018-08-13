@@ -1,12 +1,13 @@
+<div class="container">
 <table class="table table-responsive">
   <thead>
     <tr>
       <th>Id</th>
-      <th>Фамилия</th>
-      <th>Имя</th>
-      <th>Отчество</th>
-      <th>Дата Рождения</th>
-      <th>Творчество</th>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Patronymic</th>
+      <th>Date of Birth</th>
+      <th>Creation</th>
     </tr>
   </thead>
   <tbody>
@@ -14,23 +15,24 @@
       <td>{{author.id}}</td>
       <td>{{author.lastname}}</td>
       <td>{{author.firstname}}</td>
-      <td>{{author.secondname}}</td>
+      <td>{{author.patronymic}}</td>
       <td>{{author.dob}}</td>
-      <td><a routerLink="/books/{{author.id}}">Список Книг</a></td>
+      <td>
+        <button class="btn btn-dafault">
+          <a routerLink="/books/{{author.id}}">Book list</a>
+        </button>
+      </td>
+      <td>
+          <button class="btn btn-dafault">
+            <a routerLink="/details/{{author.id}}">Edit</a>
+          </button>
+        </td>
       <td><button class="btn btn-danger" title="delete author"
           (click)="delete(author)">x</button>
       </td>
     </tr>
   </tbody>
 </table>
-<div>
-    <label class="control-label">Author name:
-      <input #authorName />
-    </label>
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button class="btn" (click)="add(authorName.value); authorName.value=''">
-      add
-    </button>
-  </div>
+</div>
 
 

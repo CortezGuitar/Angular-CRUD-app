@@ -6,6 +6,6 @@ export class Author {
   public lastname: string,
   public dob: string,
   public booklist?: Book[],
-  public secondname?: string,
+  public patronymic?: string,
   ) { }
 }

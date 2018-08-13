@@ -41,13 +41,13 @@ export class AuthorService {
 
   updateAuthor(author: Author): Observable<any> {
     return this.http.put(this.authorsUrl, author, httpOptions).pipe(
-      catchError(this.handleError<any>('updateHero'))
+      catchError(this.handleError<any>('updateAuthor'))
     );
   }
 
   addAuthor (author: Author): Observable<Author> {
     return this.http.post<Author>(this.authorsUrl, author, httpOptions).pipe(
-      catchError(this.handleError<Author>('addHero'))
+      catchError(this.handleError<Author>('addAuthor'))
     );
   }
   deleteAuthor (author: Author | number): Observable<Author> {

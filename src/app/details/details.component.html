@@ -1,0 +1,45 @@
+<div class="container" *ngIf="author">
+  <form (ngSubmit)="save()" #Form="ngForm">
+    <h2>{{author.lastname | uppercase}} {{author.firstname}}</h2>
+    <div><span>id: </span>{{author.id}}</div>
+    <div>
+        <div class="form-group ">
+            <label for="lastname">Last name:</label>
+            <input type="text" class="form-control" id="lastname"
+                   required
+                   [(ngModel)]="author.lastname" name="lastname" #lastname="ngModel">
+                   <div [hidden]="lastname.valid || lastname.pristine"
+     class="alert alert-danger">
+  Last name is required
+</div>
+        </div>
+        <div class="form-group ">
+            <label for="firstname">First name:</label>
+            <input type="text" class="form-control" id="firstname"
+                   required
+                   [(ngModel)]="author.firstname" name="firstname" #firstname="ngModel">
+                   <div [hidden]="firstname.valid || firstname.pristine"
+     class="alert alert-danger">
+  First name is required
+</div>
+        </div>
+        <div class="form-group ">
+            <label for="patronymic">Patronymic:</label>
+            <input type="text" class="form-control" id="patronymic"
+                   [(ngModel)]="author.patronymic" name="patronymic">
+        </div>
+        <div class="form-group ">
+            <label for="dob">Date of birth /previous: {{author.dob}}</label>
+            <input type="date" class="form-control" id="dob"
+                   required
+                   [(ngModel)]="author.dob" name="dob" #dob="ngModel">
+                   <div [hidden]="dob.valid || dob.pristine"
+     class="alert alert-danger">
+  Date of birth is required
+</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!details.form.valid">Submit</button>
+  </form>
+</div>

@@ -7,11 +7,11 @@ export class InMemoryDataService implements InMemoryDbService {
     {id: 3, name: 'Truba', pages: '888', genre: 'foo', author: 'Шоу'}];
 
     const authors = [
-  {id: 1, firstname: 'Джордж Бернард', secondname: 'Иванович', lastname: 'foo', dob: '26.07.1856',
+  {id: 1, firstname: 'Джордж Бернард', patronymic: 'Иванович', lastname: 'foo', dob: '26.07.1856',
   booklist: books},
-  {id: 2, firstname: 'Джордж Бернард', secondname: 'Иванович', lastname: 'foo2', dob: '26.07.1856',
+  {id: 2, firstname: 'Джордж Бернард', patronymic: 'Иванович', lastname: 'foo2', dob: '26.07.1856',
   booklist: books},
-  {id: 3, firstname: 'Джордж Бернард', secondname: 'Иванович', lastname: 'Шоу', dob: '26.07.1856',
+  {id: 3, firstname: 'Джордж Бернард', patronymic: 'Иванович', lastname: 'Шоу', dob: '26.07.1856',
   booklist: books},
     ];
 
