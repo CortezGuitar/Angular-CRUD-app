@@ -1,8 +1,8 @@
-<div *ngIf="author">
+<div class="container" *ngIf="author">
 
   <h2>{{author.firstname | uppercase}} {{author.lastname | uppercase}} </h2>
   <div><span>id: </span>{{author.id}}</div>
-  <table>
+  <table class="table table-responsive">
     <thead>
       <tr>
         <th>Id</th>
@@ -20,7 +20,6 @@
       </tr>
     </tbody>
   </table>
-
+  <button class="btn btn-success" (click)="goBack()">go back</button>
 </div>
-<button (click)="goBack()">go back</button>
-<button (click)="save()">save</button>
+

@@ -18,17 +18,17 @@
       <td>{{author.patronymic}}</td>
       <td>{{author.dob}}</td>
       <td>
-        <button class="btn btn-dafault">
-          <a routerLink="/books/{{author.id}}">Book list</a>
+        <button class="btn btn-success" routerLink="/books/{{author.id}}">
+         Booklist
         </button>
       </td>
       <td>
-          <button class="btn btn-dafault">
-            <a routerLink="/details/{{author.id}}">Edit</a>
+          <button class="btn btn-warning" routerLink="/details/{{author.id}}">
+            Edit
           </button>
         </td>
-      <td><button class="btn btn-danger" title="delete author"
-          (click)="delete(author)">x</button>
+      <td><button class="btn btn-danger"
+          (click)="delete(author)">Remove</button>
       </td>
     </tr>
   </tbody>

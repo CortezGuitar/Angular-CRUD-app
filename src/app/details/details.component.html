@@ -1,5 +1,5 @@
 <div class="container" *ngIf="author">
-  <form (ngSubmit)="save()" #Form="ngForm">
+  <form (ngSubmit)="save()" #detailForm="ngForm">
     <h2>{{author.lastname | uppercase}} {{author.firstname}}</h2>
     <div><span>id: </span>{{author.id}}</div>
     <div>
@@ -40,6 +40,6 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="!details.form.valid">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!detailForm.form.valid">Submit</button>
   </form>
 </div>

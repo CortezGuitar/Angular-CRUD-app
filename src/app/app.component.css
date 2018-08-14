@@ -34,3 +34,10 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
+button {
+  margin: 2px;
+}
+.main {
+  border: 1px solid #cecece;
+  padding: 1em;
+}
