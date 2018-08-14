@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterContentChecked } from '@angular/core';
 import { Author } from '../author';
+import { Book } from '../book';
 import { AuthorService } from '../author.service';
 
 import { ActivatedRoute } from '@angular/router';
@@ -16,8 +17,8 @@ import * as _ from 'lodash';
 export class BooksComponent implements OnInit, AfterContentChecked  {
   @Input() author: Author;
 
+  books: Book[];
 
-  booklist = this.author;
 
   constructor(
     private authorService: AuthorService,
@@ -27,6 +28,7 @@ export class BooksComponent implements OnInit, AfterContentChecked  {
 
 
   ngOnInit() {
+    this.getBooks();
     this.getAuthor();
     this.getBookList();
   }
@@ -34,7 +36,10 @@ export class BooksComponent implements OnInit, AfterContentChecked  {
   ngAfterContentChecked() {
     this.getBookList();
   }
-
+  getBooks(): void {
+    this.authorService.getBooks()
+      .subscribe(books => this.books = books);
+  }
 
 getAuthor(): void {
   const id = +this.route.snapshot.paramMap.get('id');
@@ -47,12 +52,14 @@ goBack(): void {
 getBookList(): void {
   let fullList = [];
   if (this.author) {
-  for (const item of this.author.booklist) {
+    this.author.booklist = this.books;
+  for (const item of this.books) {
     if (_.isEqual(item.author, this.author.lastname)) {
         fullList = fullList.concat(item);
       }
   }
   this.author.booklist = fullList;
+  console.log(this.author);
   }
 }
 save(): void {

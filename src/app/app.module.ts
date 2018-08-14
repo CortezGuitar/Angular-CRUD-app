@@ -12,6 +12,7 @@ import { HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { InMemoryDataService} from './in-memory-data.service';
 import { AuthorFormComponent } from './author-form/author-form.component';
 import { DetailsComponent } from './details/details.component';
+import { BookFormComponent } from './book-form/book-form.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { DetailsComponent } from './details/details.component';
     BooksComponent,
     AuthorFormComponent,
     DetailsComponent,
+    BookFormComponent,
 
 
   ],

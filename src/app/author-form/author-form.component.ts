@@ -19,6 +19,7 @@ export class AuthorFormComponent   {
     lastname: ['', Validators.required],
     patronymic: [''],
     dob: ['', Validators.required],
+    booklist: ['']
   });
 
 

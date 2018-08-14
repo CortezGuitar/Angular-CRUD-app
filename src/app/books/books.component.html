@@ -6,15 +6,15 @@
     <thead>
       <tr>
         <th>Id</th>
-        <th>Название</th>
-        <th>Кол-во страниц</th>
-        <th>Жанр</th>
+        <th>Title</th>
+        <th>Number of pages</th>
+        <th>Genre</th>
       </tr>
     </thead>
     <tbody >
       <tr *ngFor="let item of author.booklist">
         <td>{{item.id}}</td>
-        <td>{{item.name}}</td>
+        <td>{{item.title}}</td>
         <td>{{item.pages}}</td>
         <td>{{item.genre}}</td>
       </tr>

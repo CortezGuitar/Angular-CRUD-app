@@ -2,9 +2,9 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const books = [{id: 1, name: 'Garmon', pages: 'foo', genre: 'foo', author: 'foo'},
-    {id: 2, name: 'Pesnya', pages: '888', genre: 'foo', author: 'foo2'},
-    {id: 3, name: 'Truba', pages: '888', genre: 'foo', author: 'Шоу'}];
+    const books = [{id: 1, title: 'Garmon', pages: 'foo', genre: 'foo', author: 'foo'},
+    {id: 2, title: 'Pesnya', pages: '888', genre: 'foo', author: 'foo2'},
+    {id: 3, title: 'Truba', pages: '888', genre: 'foo', author: 'Шоу'}];
 
     const authors = [
   {id: 1, firstname: 'Джордж Бернард', patronymic: 'Иванович', lastname: 'foo', dob: '26.07.1856',
@@ -15,6 +15,6 @@ export class InMemoryDataService implements InMemoryDbService {
   booklist: books},
     ];
 
-    return {authors};
+    return {authors, books};
   }
 }

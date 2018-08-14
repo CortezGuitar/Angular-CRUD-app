@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Author } from './author';
+import { Book } from './book';
 
 import { Observable, of} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -15,6 +16,7 @@ const httpOptions = {
 export class AuthorService {
 
   private authorsUrl = 'api/authors';
+  private booksUrl = 'api/books';
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +24,12 @@ export class AuthorService {
     return this.http.get<Author[]>(this.authorsUrl)
     .pipe(
       catchError(this.handleError('getAuthors', []))
+    );
+  }
+  getBooks(): Observable <Book[]> {
+    return this.http.get<Book[]>(this.booksUrl)
+    .pipe(
+      catchError(this.handleError('getBooks', []))
     );
   }
 
@@ -56,6 +64,11 @@ export class AuthorService {
 
     return this.http.delete<Author>(url, httpOptions).pipe(
       catchError(this.handleError<Author>('deleteAuthor'))
+    );
+  }
+  addBook (book: Book): Observable<Book> {
+    return this.http.post<Book>(this.booksUrl, book, httpOptions).pipe(
+      catchError(this.handleError<Book>('addBook'))
     );
   }
 
