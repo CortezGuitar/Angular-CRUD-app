@@ -2,23 +2,42 @@
 
   <h2>{{author.firstname | uppercase}} {{author.lastname | uppercase}} </h2>
   <div><span>id: </span>{{author.id}}</div>
-  <table class="table table-responsive">
+  <table class="table table-striped" [mfData]="author.booklist" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead>
       <tr>
         <th>Id</th>
-        <th>Title</th>
+        <th>
+          <mfDefaultSorter by="title">Title</mfDefaultSorter>
+        </th>
         <th>Number of pages</th>
-        <th>Genre</th>
+        <th>
+          <mfDefaultSorter by="genre">Genre</mfDefaultSorter>
+        </th>
       </tr>
     </thead>
     <tbody >
-      <tr *ngFor="let item of author.booklist">
+      <tr *ngFor="let item of mf.data">
         <td>{{item.id}}</td>
         <td>{{item.title}}</td>
         <td>{{item.pages}}</td>
         <td>{{item.genre}}</td>
+        <td>
+          <button class="btn btn-warning" routerLink="/detailsbook/{{item.id}}">
+            Edit
+          </button>
+        </td>
+        <td><button class="btn btn-danger"
+          (click)="delete(item)">Remove</button>
+        </td>
       </tr>
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+        </tfoot>
   </table>
   <button class="btn btn-success" (click)="goBack()">go back</button>
 </div>

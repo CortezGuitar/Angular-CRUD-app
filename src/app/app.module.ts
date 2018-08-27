@@ -13,6 +13,11 @@ import { InMemoryDataService} from './in-memory-data.service';
 import { AuthorFormComponent } from './author-form/author-form.component';
 import { DetailsComponent } from './details/details.component';
 import { BookFormComponent } from './book-form/book-form.component';
+import { DetailsBookComponent } from './details-book/details-book.component';
+import { DataTableModule } from 'angular-6-datatable';
+import { BookSearchComponent } from './book-search/book-search.component';
+import { BookComponent } from './book/book.component';
+
 
 
 @NgModule({
@@ -23,6 +28,9 @@ import { BookFormComponent } from './book-form/book-form.component';
     AuthorFormComponent,
     DetailsComponent,
     BookFormComponent,
+    DetailsBookComponent,
+    BookSearchComponent,
+    BookComponent,
 
 
   ],
@@ -32,6 +40,7 @@ import { BookFormComponent } from './book-form/book-form.component';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    DataTableModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )

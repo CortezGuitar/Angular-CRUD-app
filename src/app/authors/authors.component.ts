@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Author } from '../author';
 import { AuthorService } from '../author.service';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -11,10 +12,13 @@ import { AuthorService } from '../author.service';
 export class AuthorsComponent implements OnInit {
   authors: Author[];
 
+  public data: any;
+
   constructor(private authorService: AuthorService) { }
 
   ngOnInit() {
     this.getAuthors();
+    this.data = this.authors;
   }
 
   getAuthors(): void {

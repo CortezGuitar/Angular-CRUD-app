@@ -19,6 +19,8 @@ export class BooksComponent implements OnInit, AfterContentChecked  {
 
   books: Book[];
 
+  public data: any;
+
 
   constructor(
     private authorService: AuthorService,
@@ -31,11 +33,13 @@ export class BooksComponent implements OnInit, AfterContentChecked  {
     this.getBooks();
     this.getAuthor();
     this.getBookList();
+    this.data = this.author;
   }
 
   ngAfterContentChecked() {
     this.getBookList();
   }
+
   getBooks(): void {
     this.authorService.getBooks()
       .subscribe(books => this.books = books);
@@ -59,12 +63,15 @@ getBookList(): void {
       }
   }
   this.author.booklist = fullList;
-  console.log(this.author);
   }
 }
 save(): void {
   this.authorService.updateAuthor(this.author)
   .subscribe(() => this.goBack());
+}
+delete(book: Book): void {
+  this.books = this.books.filter(b => b !== book);
+  this.authorService.deleteBook(book).subscribe();
 }
 }
 

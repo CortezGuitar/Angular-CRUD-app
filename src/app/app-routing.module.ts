@@ -5,7 +5,8 @@ import { BooksComponent } from './books/books.component';
 import { AuthorFormComponent } from './author-form/author-form.component';
 import { DetailsComponent } from './details/details.component';
 import { BookFormComponent } from './book-form/book-form.component';
-
+import { DetailsBookComponent } from './details-book/details-book.component';
+import { BookComponent } from './book/book.component';
 
 const routes: Routes = [
   { path: 'authors', component: AuthorsComponent },
@@ -13,7 +14,9 @@ const routes: Routes = [
   { path: 'books/:id', component: BooksComponent },
   { path: 'authorform', component: AuthorFormComponent },
   { path: 'details/:id', component: DetailsComponent },
-  { path: 'bookform', component: BookFormComponent }
+  { path: 'bookform', component: BookFormComponent },
+  { path: 'detailsbook/:id', component: DetailsBookComponent },
+  { path: 'book/:id', component: BookComponent }
 ];
 
 

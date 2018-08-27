@@ -40,6 +40,13 @@ export class AuthorService {
     );
   }
 
+  getBook(id: number): Observable<Book> {
+    const url = `${this.booksUrl}/${id}`;
+    return this.http.get<Book>(url).pipe(
+      catchError(this.handleError<Book>(`getBook id=${id}`))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -71,6 +78,26 @@ export class AuthorService {
       catchError(this.handleError<Book>('addBook'))
     );
   }
+  deleteBook (book: Book | number): Observable<Book> {
+    const id = typeof book === 'number' ? book : book.id;
+    const url = `${this.booksUrl}/${id}`;
 
+    return this.http.delete<Book>(url, httpOptions).pipe(
+      catchError(this.handleError<Book>('deleteBook'))
+    );
+  }
+  updateBook(book: Book): Observable<any> {
+    return this.http.put(this.booksUrl, book, httpOptions).pipe(
+      catchError(this.handleError<any>('updateBook'))
+    );
+  }
+  searchBooks(term: string): Observable<Book[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Book[]>(`${this.booksUrl}/?title=${term}`).pipe(
+      catchError(this.handleError<Book[]>('searchBooks', []))
+    );
+  }
 
 }

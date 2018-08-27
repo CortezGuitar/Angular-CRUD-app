@@ -1,0 +1,41 @@
+<div class="container" *ngIf="book">
+  <form (ngSubmit)="save()" #detailBookForm="ngForm">
+    <h2>{{book.title | uppercase}}</h2>
+    <div><span>id: </span>{{book.id}}</div>
+    <div>
+        <div class="form-group ">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title"
+                   required
+                   [(ngModel)]="book.title" name="title" #title="ngModel">
+                   <div [hidden]="title.valid || title.pristine"
+     class="alert alert-danger">
+  Title is required
+          </div>
+        </div>
+        <div class="form-group ">
+            <label for="pages">Number of pages:</label>
+            <input type="text" class="form-control" id="pages"
+                   required
+                   [(ngModel)]="book.pages" name="pages" #pages="ngModel">
+                   <div [hidden]="pages.valid || pages.pristine"
+     class="alert alert-danger">
+  Number of pages is required
+          </div>
+        </div>
+        <div class="form-group ">
+            <label for="genre">Genre:</label>
+            <select class="form-control"  id="genre" required
+              [(ngModel)]="book.genre" name="genre" #genre="ngModel">
+              <option value="">--Select a genre--</option>
+              <option *ngFor="let gen of genres" [value]="gen">{{gen}}</option>
+            </select>
+            <div [hidden]="genre.valid || genre.pristine" class="alert alert-danger">
+              Genre is required
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!detailBookForm.form.valid">Submit</button>
+  </form>
+</div>

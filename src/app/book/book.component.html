@@ -1,0 +1,24 @@
+<div class="container" *ngIf="book">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 20%">Id</th>
+        <th style="width: 20%">Title</th>
+        <th style="width: 20%">Number of pages</th>
+        <th style="width: 20%">Genre</th>
+        <th style="width: 20%">Author</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr>
+        <td>{{book.id}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.pages}}</td>
+        <td>{{book.genre}}</td>
+        <td>{{book.author}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" (click)="goBack()">go back</button>
+</div>
