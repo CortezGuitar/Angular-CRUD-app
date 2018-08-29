@@ -1,27 +1,35 @@
-# AngularLibrary
+# Дипломный проект курса Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+## Клиентское одностраничное приложение, которое предоставляет возможность манипулировать данными связанными с авторами и их книгами
 
-## Development server
+## Языки и технологии
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+•	HTML, CSS, TypeScript, Angular
 
-## Code scaffolding
+Автор имеет следующие атрибуты:
+•	Фамилия (текст, обязательное)
+•	Имя (текст, обязательное)
+•	Отчество (текст, не обязательное) 
+•	Дата рождения (дата, обязательное)
+•	Список книг
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Книга имеет следующие атрибуты:
+•	Название (текст, обязательное)
+•	Количество страниц (число, обязательное)
+•	Жанр (текст, обязательное из списка допустимых значений)
 
-## Build
+Реализована возможность добавлять, удалять, редактировать авторов. Реализована возможность добавлять, удалять и редактировать книги. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+На всех формах реализована валидация.
 
-## Running unit tests
+На всех формах где есть табличное представление данных реализована сортировка данных по столбцам.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Реализована возможность поиска книг по названию.
 
-## Running end-to-end tests
+## Для запуска приложения на локальном сервере необходимо:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+•	Установить NodeJS.
+•	В папке проекта выполнить команду npm install.
+•	Для запуска сервера в папке проекта запустить команду npm start. 
+•	Для запуска приложения откройте в браузере адрес http://localhost:4200/
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
