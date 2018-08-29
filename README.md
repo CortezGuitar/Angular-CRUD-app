@@ -6,6 +6,8 @@
 
 •	HTML, CSS, TypeScript, Angular
 
+![alt text](https://github.com/CortezGuitar/Library/blob/master/src/LibShot.png)
+
 Автор имеет следующие атрибуты:
 •	Фамилия (текст, обязательное)
 •	Имя (текст, обязательное)
