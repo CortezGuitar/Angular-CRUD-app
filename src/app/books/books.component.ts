@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Author } from '../author';
 import { Book } from '../book';
 import { AuthorService } from '../author.service';
