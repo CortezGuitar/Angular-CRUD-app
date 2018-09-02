@@ -6,6 +6,7 @@ import { AuthorService } from '../author.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import * as _ from 'lodash';
+import { forkJoin, Observable } from 'rxjs';
 
 
 
@@ -14,7 +15,7 @@ import * as _ from 'lodash';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent implements OnInit, AfterContentChecked  {
+export class BooksComponent implements OnInit  {
   @Input() author: Author;
 
   books: Book[];
@@ -30,48 +31,44 @@ export class BooksComponent implements OnInit, AfterContentChecked  {
 
 
   ngOnInit() {
-    this.getBooks();
-    this.getAuthor();
-    this.getBookList();
+    forkJoin ([this.getBooks(), this.getAuthor()]).subscribe (res => {
+      this.books = res[0];
+      this.author = res[1];
+      this.getBookList();
+    });
     this.data = this.author;
   }
 
-  ngAfterContentChecked() {
-    this.getBookList();
+  getBooks(): Observable <Book[]> {
+    return this.authorService.getBooks();
   }
 
-  getBooks(): void {
-    this.authorService.getBooks()
-      .subscribe(books => this.books = books);
+  getAuthor(): Observable <Author> {
+    const id = +this.route.snapshot.paramMap.get('id');
+    return this.authorService.getAuthor(id);
   }
-
-getAuthor(): void {
-  const id = +this.route.snapshot.paramMap.get('id');
-  this.authorService.getAuthor(id)
-    .subscribe(author => this.author = author);
-}
-goBack(): void {
-  this.location.back();
-}
-getBookList(): void {
-  let fullList = [];
-  if (this.author) {
-    this.author.booklist = this.books;
-  for (const item of this.books) {
-    if (_.isEqual(item.author, this.author.lastname)) {
-        fullList = fullList.concat(item);
-      }
+  goBack(): void {
+    this.location.back();
   }
-  this.author.booklist = fullList;
+  getBookList(): void {
+    let fullList = [];
+    if (this.author) {
+      this.author.booklist = this.books;
+    for (const item of this.books) {
+      if (_.isEqual(item.author, this.author.lastname)) {
+          fullList = fullList.concat(item);
+        }
+    }
+    this.author.booklist = fullList;
+    }
   }
-}
-save(): void {
-  this.authorService.updateAuthor(this.author)
-  .subscribe(() => this.goBack());
-}
-delete(book: Book): void {
-  this.books = this.books.filter(b => b !== book);
-  this.authorService.deleteBook(book).subscribe();
-}
+  save(): void {
+    this.authorService.updateAuthor(this.author)
+    .subscribe(() => this.goBack());
+  }
+  delete(book: Book): void {
+    this.books = this.books.filter(b => b !== book);
+    this.authorService.deleteBook(book).subscribe();
+  }
 }
 
